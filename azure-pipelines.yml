@@ -19,5 +19,5 @@ steps:
     resourceGroupName: 'Mofolawe'
     location: 'East US 2'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://github.com/Mendore85/ARM-Test/blob/main/AmLink-PC-Accounting-Engine-.json'
+    csmFileLink: 'https://github.com/Mendore85/ARM-Test'
     deploymentMode: 'Incremental'
