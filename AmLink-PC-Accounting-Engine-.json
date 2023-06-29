@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "hostingPlanName" : { "value" : "AmLink PC Accounting Engine-" },
+        "skuTier": { "value": "PremiumV2"},
+        "skuName": { "value": "P2v2" },
+        "skuCapacity" : { "value": 1 },
+        "location": {
+            "value": "eastus2"
+        },
+        "planKind": {
+            "value": "linux"
+        },
+        "appName": { "value": "AmLink-PC-Accounting-Engine-" },
+        "appKind": {
+            "value": "app,linux,container"
+        },
+        "appSlotName": {
+            "value": "stage"
+        },
+        "appAlwaysOn": {
+            "value": true
+        },
+        "DOCKER_CUSTOM_IMAGE_NAME": {
+            "value": "amlinkcontainerregistry.azurecr.io/amlink-accounting-engine:150795"
+        },
+        "DOCKER_REGISTRY_SERVER_URL": {
+            "value": "https://amlinkcontainerregistry.azurecr.io"
+        }
+    }
+}
