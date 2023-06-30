@@ -20,6 +20,18 @@
       "metadata": {
         "description": "Testwebfolawe"
       }
+    },
+    "maximumElasticWorkerCount": {
+      "type": "int",
+      "metadata": {
+        "description": "Maximum Elastic Worker Count"
+      }
+    },
+    "randomParameter1": {
+      "type": "string",
+      "metadata": {
+        "description": "Random Parameter 1"
+      }
     }
   },
   "resources": [
@@ -66,3 +78,4 @@
     }
   ]
 }
+
