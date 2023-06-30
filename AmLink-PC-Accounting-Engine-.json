@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
+  "contentVersion": "2023-06-30",
   "parameters": {
     "appName": {
       "type": "string",
@@ -31,7 +31,7 @@
       "sku": {
         "name": "P1V2",
         "tier": "PremiumV2",
-        "size": "P1v2",
+        "size": "P1V2",
         "family": "P",
         "capacity": 1
       },
