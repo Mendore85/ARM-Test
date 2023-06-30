@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "2023-06-30",
+  "contentVersion": "1.0.0.20230630",
   "parameters": {
     "appName": {
       "type": "string",
@@ -10,7 +10,7 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
+      "defaultValue": "[Mofolawe().location]",
       "metadata": {
         "description": "EastUS"
       }
@@ -24,7 +24,7 @@
   },
   "resources": [
     {
-      "name": "[parameters('appServicePlanName')]",
+      "name": "[parameters('maximumElasticWorkerCount')]",
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2021-02-01",
       "location": "[parameters('location')]",
