@@ -10,7 +10,7 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[Mofolawe().location]",
+      "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "EastUS"
       }
@@ -78,4 +78,3 @@
     }
   ]
 }
-
