@@ -1,32 +1,68 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "hostingPlanName" : { "value" : "AmLink PC Accounting Engine-" },
-        "skuTier": { "value": "PremiumV2"},
-        "skuName": { "value": "P2v2" },
-        "skuCapacity" : { "value": 1 },
-        "location": {
-            "value": "eastus2"
-        },
-        "planKind": {
-            "value": "linux"
-        },
-        "appName": { "value": "AmLink-PC-Accounting-Engine-" },
-        "appKind": {
-            "value": "app,linux,container"
-        },
-        "appSlotName": {
-            "value": "stage"
-        },
-        "appAlwaysOn": {
-            "value": true
-        },
-        "DOCKER_CUSTOM_IMAGE_NAME": {
-            "value": "amlinkcontainerregistry.azurecr.io/amlink-accounting-engine:150795"
-        },
-        "DOCKER_REGISTRY_SERVER_URL": {
-            "value": "https://amlinkcontainerregistry.azurecr.io"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "type": "string",
+      "metadata": {
+        "description": "Test web"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "EastUS"
+      }
+    },
+    "appServicePlanName": {
+      "type": "string",
+      "metadata": {
+        "description": "Testwebfolawe"
+      }
     }
+  },
+  "resources": [
+    {
+      "name": "[parameters('appServicePlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2021-02-01",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "P1V2",
+        "tier": "PremiumV2",
+        "size": "P1v2",
+        "family": "P",
+        "capacity": 1
+      },
+      "properties": {},
+      "resources": [
+        {
+          "name": "[parameters('appName')]",
+          "type": "sites",
+          "apiVersion": "2021-02-01",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[parameters('appServicePlanName')]"
+          ],
+          "properties": {
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+            "siteConfig": {
+              "appSettings": [
+                {
+                  "name": "Setting1",
+                  "value": "Value1"
+                },
+                {
+                  "name": "Setting2",
+                  "value": "Value2"
+                }
+              ]
+            },
+            "httpsOnly": true
+          }
+        }
+      ]
+    }
+  ]
 }
